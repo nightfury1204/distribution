@@ -6,15 +6,15 @@ storage:
   cache:
     blobdescriptor: inmemory
   filesystem:
-    rootdirectory: /var/lib/registry
+    rootdirectory: dist/var/lib/registry
 http:
   addr: :5000
   headers:
     X-Content-Type-Options: [nosniff]
 auth:
-  htpasswd:
+  remote-auth:
     realm: basic-realm
-    path: /etc/registry
+    apiUrl: 'http://localhost:5001/v1/login'
 health:
   storagedriver:
     enabled: true
