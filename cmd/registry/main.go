@@ -5,6 +5,7 @@ import (
 
 	"github.com/docker/distribution/registry"
 	_ "github.com/docker/distribution/registry/auth/htpasswd"
+	_ "github.com/docker/distribution/registry/auth/remote-auth"
 	_ "github.com/docker/distribution/registry/auth/silly"
 	_ "github.com/docker/distribution/registry/auth/token"
 	_ "github.com/docker/distribution/registry/proxy"

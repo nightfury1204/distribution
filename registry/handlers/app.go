@@ -857,6 +857,7 @@ func (app *App) authorized(w http.ResponseWriter, r *http.Request, context *Cont
 			// to avoid exposure. The request should not proceed.
 			dcontext.GetLogger(context).Errorf("error checking authorization: %v", err)
 			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte(err.Error()))
 		}
 
 		return err
