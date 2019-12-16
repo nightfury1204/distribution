@@ -1,0 +1,22 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: dist/var/lib/registry
+http:
+  addr: :5000
+  headers:
+    X-Content-Type-Options: [nosniff]
+auth:
+  remote-auth:
+    realm: basic-realm
+    apiUrl: 'http://auth-server:5001/v1/login'
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3

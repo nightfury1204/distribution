@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  registry:
+    build:
+      context: ../
+    depends_on:
+      - auth-server
+    restart: on-failure
+    networks:
+      localenv:
+        aliases:
+          - registry.com
+    volumes:
+      - ./config-example.yml:/etc/docker/registry/config.yml
+    container_name: registry
+    ports:
+      - 0.0.0.0:5000:5000
+
+  auth-server:
+    build:
+      context: ./auth-server/
+    restart: on-failure
+    networks:
+      localenv:
+        aliases:
+          - auth-server
+    container_name: auth-server
+    ports:
+      - 0.0.0.0:5001:5001
+
+networks:
+  localenv:
